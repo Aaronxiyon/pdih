@@ -27,6 +27,11 @@ En esta primera practica hemos desarrollado las siguientes funciones
       que es el el caracter a modificar
 • getche(): obtiene un carácter de teclado y lo muestra en pantalla 
 
+
 Para la realizacion del main hemos creado un menú para la facil interpretacion de las funciones realizadas.
 Para resolver el problema que nos apareció al castear de int a char lo que hemos hecho es restarle 48 a ciertas variables
 para que a la hora de castearlas e introducirlas a las funciones no den error.
+
+Funcion extra 1 ("a"):
+    Para la realizacion de esta funcion que esta dentro del main, lo que hemos hecho ha sido definir 4 puntos en la pantalla, correspondientes a las esquinas de un cuadrado y dibujar "/" que lleguen desde el primer punto hasta el resto de ellos sumando en 1 la componente j e i, previamente definidas.
+
