@@ -1,8 +1,3 @@
-/*
-PRACTICA 1 REALIZADA POR ENRIQUE GONZALEZ LOPES Y AARON RIVET RAMIREZ
-PDIH 2022
-*/
-
 #include <stdio.h>
 #include <dos.h>
 
@@ -91,10 +86,10 @@ int getvideomode(){
 }
 
 //Funcion 5
-void textcolor(int color){// modifica el color de primer plano con que se mostrarï¿½n los caracteres
+void textcolor(int color){// modifica el color de primer plano con que se mostrarán los caracteres
     union REGS inregs, outregs;
     inregs.h.ah = 0x09;
-    inregs.h.bl = color;
+    inregs.h.bl = 0 << 4 | color;
     inregs.h.bh = 0x00;
     inregs.x.cx = 5;
     int86(0x10,&inregs,&outregs);
@@ -102,7 +97,7 @@ void textcolor(int color){// modifica el color de primer plano con que se mostra
 }
 
 //Funcion 6
-void textbackground(int color){ //: modifica el color de fondo con que se mostrarï¿½n los caracteres
+void textbackground(int color){ //: modifica el color de fondo con que se mostrarán los caracteres
     union REGS inregs, outregs;
     inregs.h.ah = 0x09;
     inregs.h.bl = color << 4;
@@ -254,7 +249,7 @@ int main(){
 			int color;
 			printf("\nEsta funcion cambia el primer plano de color");
 			printf("\nIntroduzca un numero entre el 0 y el 7: ");
-			color = mi_getchar();
+			color = mi_getchar()-48;
 			printf("\n");
 			textcolor(color);
 			mi_pausa();
@@ -265,7 +260,7 @@ int main(){
 			int fondo;
 			printf("\nEsta funcion cambia el fondo de color");
 			printf("\nIntroduzca un numero entre el 0 y el 7: ");
-			fondo = mi_getchar();
+			fondo = mi_getchar()-48;
 			printf("\n");
 			textbackground(fondo);
 			mi_pausa();
@@ -281,16 +276,16 @@ int main(){
 		else if(tmp == '8')
       {
       	int letra, fondo, color;
-			printf("\nEsta funcion escribe un caracter con los parï¿½metros de color elegidos");
+			printf("\nEsta funcion escribe un caracter con los parámetros de color elegidos");
 			printf("\nIntroduzca un caracter: ");
 			letra = mi_getchar();
 			printf("\nIntroduzca un color de fondo entre el 0 y el 7: ");
-			fondo = mi_getchar();
+			fondo = mi_getchar()-48;
 			printf("\nIntroduzca un color de letra entre el 0 y el 7: ");
-			color = mi_getchar();
+			color = mi_getchar()-48;
 			printf("\n");
-			cputchar((char)letra, fondo, color);
-			cputchar((char)letra,4,1);
+			cputchar((char)letra, (unsigned char) fondo, (unsigned char)color);
+		
 			mi_pausa();
 			printf("\n\n");
 	   }
