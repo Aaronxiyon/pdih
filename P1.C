@@ -158,6 +158,7 @@ int main(){
 		printf("\nPulsa 7 para clrscr()");
 		printf("\nPulsa 8 para cputchar()");
 		printf("\nPulsa 9 para getche()");
+		printf("\nPulsa a para funcion extra 1");
 		printf("\nPulsa 0 para cerrar el programa");
 
 		printf("\n\nPulsa una tecla...  ");
@@ -284,7 +285,7 @@ int main(){
 			printf("\nIntroduzca un color de letra entre el 0 y el 7: ");
 			color = mi_getchar()-48;
 			printf("\n");
-			cputchar((char)letra, (unsigned char) fondo, (unsigned char)color);
+			cputchar((char)letra, fondo, color);
 		
 			mi_pausa();
 			printf("\n\n");
@@ -296,7 +297,48 @@ int main(){
 			mi_pausa();
 			printf("\n\n");
 		}
-		else if(tmp != '1' && tmp != '2' && tmp != '3' && tmp != '4' && tmp != '5' && tmp != '6' && tmp != '7' && tmp != '8' && tmp != '9' && tmp != '0')
+		else if(tmp == 'a')
+		{
+				int x1,x2,y1,y2,j,i,fondo, color,letra;
+				printf("\nEsta es la función extra 1: ");
+				printf("\nIntroduzca la coordenada x de la esquina superior izquierda\n");
+				x1 = mi_getchar()-48;
+				printf("\nIntroduzca la coordenada y de la esquina superior izquierda\n");
+				y1 = mi_getchar()-48;
+				printf("\nIntroduzca la coordenada x de la esquina inferior derecha \n");
+				x2 = mi_getchar()-48;
+				printf("\nIntroduzca la coordenada y de la esquina inferior derecha\n");
+				y2 = mi_getchar()-48;	
+				printf("\nIntroduzca un color de fondo entre el 0 y el 7: ");
+				fondo = mi_getchar()-48;
+				printf("\nIntroduzca un color de letra entre el 0 y el 7: ");
+				color = mi_getchar()-48;
+				printf("\nPulsa cualquier letra para dibujar...");
+				mi_pausa();
+				
+				clrscr();
+				
+				for(j = x1; j <= x2; j++)
+				{
+					if( j != x1 && j != x2 )
+					{
+							gotoxy(j,y1);
+							cputchar('/', fondo, color);
+							gotoxy(j,y2);
+							cputchar('/', fondo, color);
+					}
+					else
+					{
+						for(i = y1; i <= y2; i++)
+						{					
+							gotoxy(j,i);
+							cputchar('/', fondo, color);
+						}
+					}
+				}
+				mi_pausa();
+		}
+		else if(tmp != '1' && tmp != '2' && tmp != '3' && tmp != '4' && tmp != '5' && tmp != '6' && tmp != '7' && tmp != '8' && tmp != '9' && tmp != '0' && tmp != 'a')
 		{
 			printf("\nEl caracter introducido no es valido, prueba otra vez");
 			mi_pausa();
